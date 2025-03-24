@@ -1,0 +1,168 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif; /* Professional font */
+  background-color: #f3f4f6;
+  color: #333;
+  line-height: 1.6;
+}
+
+h2 {
+  text-align: center;
+  margin: 20px 0;
+  color: #000; /* Text color */
+  font-size: 32px; /* Slightly larger size */
+  font-weight: 700; /* Bolder weight */
+  letter-spacing: 2px; /* Increased letter spacing */
+  background: linear-gradient(90deg, #000, #000); /* Gradient background */
+  -webkit-background-clip: text; /* Clipping the background to text */
+  color: transparent; /* Making the text transparent so the gradient shows */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -1px -1px 5px rgba(0, 0, 0, 0.15); /* Text shadow */
+}
+
+h2:hover {
+  transform: none; /* Removing scaling effect */
+  color: #000; /* Text color when hovered */
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3), -2px -2px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+form:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #333;
+}
+
+input,
+select {
+  padding: 12px;
+  font-size: 16px;
+  color: #333030;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+select {
+  cursor: pointer;
+}
+
+input:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: #000000;
+  color: white;
+  padding: 10px 10px;
+  font-size: 20px ;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #333030;
+}
+
+form div input,
+form div select {
+  width: 100%;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #28a745;
+}
+
+p {
+  text-align: center;
+  font-size: 18px;
+  color: #6c757d;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Prediction container */
+.prediction-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Animation for form appearance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+form {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  form {
+    padding: 20px;
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+
+  button[type="submit"] {
+    padding: 10px 15px;
+  }
+}
