@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../App.css";
-import { FaPlay } from 'react-icons/fa';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';  // Import the styles for toast
+import { FaPlay } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the styles for toast
 
 const PredictForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,9 @@ const PredictForm = () => {
     MonthlyCharges: "",
     TotalCharges: "",
     gender: "",
+    SeniorCitizen: "",
+    Partner: "",
+    Dependents: "",
     Contract: "",
     PaperlessBilling: "",
     PaymentMethod: "",
@@ -43,17 +46,20 @@ const PredictForm = () => {
       setPrediction(response.data.prediction); // Get prediction from API response
       setProbability(response.data.probability); // Get probability from API response
       setError("");
-      
+
       // Show toast message for the prediction result
-      toast.success(`Prediction: ${response.data.prediction} - Probability: ${response.data.probability}`, {
-        position: "top-center",
-        autoClose: 5000,
-      });
+      toast.success(
+        `Prediction: ${response.data.prediction} | Probability: ${response.data.probability}`,
+        {
+          position: "top-center",
+          autoClose: 5000,
+        }
+      );
     } catch (err) {
-      setError("Error in making prediction. Please try again.");
+      setError("Error in making prediction. Please try again.", err);
       setPrediction("");
       setProbability("");
-      
+
       // Show toast message for error
       toast.error("Error in making prediction. Please try again.", {
         position: "top-center",
@@ -112,6 +118,45 @@ const PredictForm = () => {
             <option value="">Select gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Senior Citizen:</label>
+          <select
+            name="SeniorCitizen"
+            value={formData.SeniorCitizen}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select option</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Partner:</label>
+          <select
+            name="Partner"
+            value={formData.Partner}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Dependents:</label>
+          <select
+            name="Dependents"
+            value={formData.Dependents}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
           </select>
         </div>
         <div className="form-group">
@@ -218,16 +263,16 @@ const PredictForm = () => {
         <button type="submit" className="submit-btn">
           <FaPlay style={{ marginRight: "8px" }} /> Predict Churn
         </button>
+        
+        {/* Display bottom message with result */}
+        {prediction && (
+          <div className="prediction-result">
+            <h3>Churn Prediction: {prediction}</h3>
+            <p>Probability of Churn: {probability}</p>
+          </div>
+        )}
+        {error && <h3 className="error">{error}</h3>}
       </form>
-
-      {/* Display bottom message with result */}
-      {prediction && (
-        <div className="prediction-result">
-          <h3>Prediction: {prediction}</h3>
-          <p>Probability of Churn: {probability}</p>
-        </div>
-      )}
-      {error && <h3 className="error">{error}</h3>}
 
       {/* Toast container to show the toast notifications */}
       <ToastContainer />

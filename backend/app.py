@@ -15,7 +15,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Define feature names
-feature_names = ['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'Contract', 'PaymentMethod',
+feature_names = ['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'Contract', 'PaymentMethod',
                  'PaperlessBilling', 'PhoneService', 'InternetService', 'OnlineSecurity', 'TechSupport']
 
 @app.route('/predict', methods=['POST'])
